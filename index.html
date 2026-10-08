@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SentraOps AI — IT Operations Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div><strong>SentraOps</strong><span>AI OPERATIONS</span></div>
+      </div>
+      <div class="workspace">
+        <div class="workspace-icon">⌘</div>
+        <div><small>Workspace</small><b>Production Ops</b></div>
+        <span>⌄</span>
+      </div>
+
+      <nav>
+        <p class="nav-label">OPERATIONS</p>
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-item" data-page="services"><span>◈</span> Services</button>
+        <button class="nav-item" data-page="incidents"><span>⚠</span> Incidents <em>6</em></button>
+        <button class="nav-item" data-page="alerts"><span>◉</span> Alerts <em>12</em></button>
+        <button class="nav-item" data-page="logs"><span>≡</span> Logs</button>
+        <button class="nav-item" data-page="monitoring"><span>⌁</span> Monitoring</button>
+        <button class="nav-item" data-page="ai"><span>✦</span> AI Operations</button>
+
+        <p class="nav-label">MANAGEMENT</p>
+        <button class="nav-item" data-page="analytics"><span>◫</span> Analytics</button>
+        <button class="nav-item" data-page="deployments"><span>⇧</span> Deployments</button>
+        <button class="nav-item" data-page="audit"><span>◌</span> Audit Logs</button>
+        <button class="nav-item" data-page="users"><span>♙</span> Users & Teams</button>
+
+        <p class="nav-label">SYSTEM</p>
+        <button class="nav-item" data-page="health"><span>♥</span> System Health</button>
+        <button class="nav-item" data-page="settings"><span>⚙</span> Settings</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="status-mini"><span class="dot green"></span><div><b>All systems operational</b><small>Updated 34 sec ago</small></div></div>
+        <div class="user-card">
+          <div class="avatar">AT</div><div><b>Atharv Trigune</b><small>DevOps Engineer</small></div><button id="logoutBtn">↗</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="breadcrumbs"><span>SentraOps AI</span><b>/</b><strong id="pageTitle">Dashboard</strong></div>
+        <div class="top-actions">
+          <button class="icon-btn" id="searchBtn">⌕</button>
+          <button class="icon-btn notification" id="notifBtn">◔<i></i></button>
+          <button class="env-btn"><span class="dot green"></span> Production⌄</button>
+          <div class="top-avatar">AT</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="page active" id="page-dashboard">
+          <div class="page-head">
+            <div><p class="eyebrow">OPERATIONS OVERVIEW</p><h1>Good afternoon, Atharv.</h1><p class="muted">Here's what's happening across your production environment.</p></div>
+            <div class="head-actions"><button class="btn ghost" id="refreshBtn">↻ Refresh</button><button class="btn primary" data-page="incidents">+ Create Incident</button></div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-top"><span>Total Services</span><b class="blue">↗ 8</b></div><strong>24</strong><small>+2 this month</small></div>
+            <div class="stat-card"><div class="stat-top"><span>Healthy Services</span><b class="green-text">● 92%</b></div><strong>22</strong><small>2 need attention</small></div>
+            <div class="stat-card"><div class="stat-top"><span>Active Incidents</span><b class="red-text">● 6</b></div><strong>6</strong><small>2 high severity</small></div>
+            <div class="stat-card"><div class="stat-top"><span>Open Alerts</span><b class="amber-text">● 12</b></div><strong>12</strong><small>4 triggered today</small></div>
+            <div class="stat-card"><div class="stat-top"><span>Avg. Resolution</span><b class="green-text">↓ 14%</b></div><strong>28m</strong><small>vs 32m last week</small></div>
+          </div>
+
+          <div class="grid-2">
+            <div class="panel chart-panel">
+              <div class="panel-head"><div><h3>Incident Trend</h3><span class="panel-sub">Last 30 days</span></div><button class="select">30 days⌄</button></div>
+              <canvas id="incidentChart"></canvas>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><div><h3>Service Health</h3><span class="panel-sub">Live status</span></div><button class="link-btn" data-page="services">View all →</button></div>
+              <div class="service-list">
+                <div class="service-row"><span class="service-icon purple">A</span><div><b>Authentication Service</b><small>v2.4.1 · prod</small></div><span class="health healthy">Healthy</span><div class="mini-bar"><i style="width:94%"></i></div><b>99.98%</b></div>
+                <div class="service-row"><span class="service-icon blue">U</span><div><b>User Service</b><small>v3.1.0 · prod</small></div><span class="health healthy">Healthy</span><div class="mini-bar"><i style="width:98%"></i></div><b>99.99%</b></div>
+                <div class="service-row"><span class="service-icon orange">P</span><div><b>Payment Service</b><small>v4.2.2 · prod</small></div><span class="health warning">Warning</span><div class="mini-bar warn"><i style="width:73%"></i></div><b>99.72%</b></div>
+                <div class="service-row"><span class="service-icon red">G</span><div><b>API Gateway</b><small>v5.0.1 · prod</small></div><span class="health critical">Critical</span><div class="mini-bar danger"><i style="width:42%"></i></div><b>97.41%</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2 lower">
+            <div class="panel">
+              <div class="panel-head"><div><h3>Active Incidents</h3><span class="panel-sub">Requires attention</span></div><button class="link-btn" data-page="incidents">View all →</button></div>
+              <div class="incident-list">
+                <div class="incident-item"><span class="severity sev1">SEV-1</span><div><b>API Gateway elevated error rate</b><small>INC-1048 · 12 min ago</small></div><span class="health critical">Investigating</span></div>
+                <div class="incident-item"><span class="severity sev2">SEV-2</span><div><b>Payment service latency spike</b><small>INC-1047 · 26 min ago</small></div><span class="health warning">Mitigating</span></div>
+                <div class="incident-item"><span class="severity sev3">SEV-3</span><div><b>Notification queue backlog</b><small>INC-1044 · 48 min ago</small></div><span class="health neutral">Assigned</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><div><h3>Recent Activity</h3><span class="panel-sub">Latest events</span></div><button class="link-btn" data-page="audit">Audit log →</button></div>
+              <div class="activity">
+                <div><span class="activity-icon ai">✦</span><p><b>AI analysis completed</b><small>INC-1048 · 2 minutes ago</small></p></div>
+                <div><span class="activity-icon green">✓</span><p><b>Incident resolved</b><small>INC-1043 · 8 minutes ago</small></p></div>
+                <div><span class="activity-icon blue">⇧</span><p><b>Deployment successful</b><small>payment-service v4.2.2 · 16 minutes ago</small></p></div>
+                <div><span class="activity-icon amber">!</span><p><b>Alert triggered</b><small>CPU &gt; 90% · API Gateway · 21 minutes ago</small></p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-services">
+          <div class="page-head"><div><p class="eyebrow">SERVICE MANAGEMENT</p><h1>Services</h1><p class="muted">Monitor applications, ownership, versions, and health.</p></div><button class="btn primary" id="addService">+ Add Service</button></div>
+          <div class="toolbar"><input class="search-input" placeholder="⌕ Search services..." data-filter="services"><select><option>All environments</option><option>Production</option><option>Staging</option></select><select><option>All status</option><option>Healthy</option><option>Warning</option><option>Critical</option></select></div>
+          <div class="table-panel"><table><thead><tr><th>Service</th><th>Environment</th><th>Owner / Team</th><th>Version</th><th>Health</th><th>Deployment</th><th>Last checked</th></tr></thead><tbody id="servicesTable"></tbody></table></div>
+        </section>
+
+        <section class="page" id="page-incidents">
+          <div class="page-head"><div><p class="eyebrow">INCIDENT MANAGEMENT</p><h1>Incidents</h1><p class="muted">Investigate, collaborate, resolve, and document operational incidents.</p></div><button class="btn primary" id="newIncident">+ Create Incident</button></div>
+          <div class="stat-grid compact"><div class="stat-card"><span>Open</span><strong>6</strong></div><div class="stat-card"><span>Investigating</span><strong>3</strong></div><div class="stat-card"><span>Mitigating</span><strong>2</strong></div><div class="stat-card"><span>Resolved today</span><strong>14</strong></div></div>
+          <div class="toolbar"><input class="search-input" placeholder="⌕ Search incidents..." id="incidentSearch"><div class="filter-pills"><button class="pill active">All</button><button class="pill">SEV-1</button><button class="pill">SEV-2</button><button class="pill">Open</button><button class="pill">Resolved</button></div></div>
+          <div class="table-panel"><table><thead><tr><th>Incident</th><th>Service</th><th>Severity</th><th>Status</th><th>Assigned</th><th>Created</th><th></th></tr></thead><tbody id="incidentsTable"></tbody></table></div>
+        </section>
+
+        <section class="page" id="page-alerts">
+          <div class="page-head"><div><p class="eyebrow">ALERT MANAGEMENT</p><h1>Alerts</h1><p class="muted">Monitor triggered conditions before they become larger incidents.</p></div><button class="btn ghost" id="ackAll">✓ Acknowledge all</button></div>
+          <div class="alert-cards" id="alertCards"></div>
+        </section>
+
+        <section class="page" id="page-logs">
+          <div class="page-head"><div><p class="eyebrow">CENTRALIZED LOGGING</p><h1>Logs</h1><p class="muted">Structured logs prepared for ELK ingestion and incident investigation.</p></div><button class="btn ghost" id="exportLogs">↓ Export</button></div>
+          <div class="toolbar"><input class="search-input" id="logSearch" placeholder="⌕ Search logs, trace IDs, messages..."><select id="logLevel"><option>All levels</option><option>ERROR</option><option>WARN</option><option>INFO</option><option>DEBUG</option><option>CRITICAL</option></select><select><option>All services</option><option>api-gateway</option><option>payment-service</option><option>auth-service</option></select></div>
+          <div class="log-console" id="logConsole"></div>
+        </section>
+
+        <section class="page" id="page-monitoring">
+          <div class="page-head"><div><p class="eyebrow">OBSERVABILITY</p><h1>Monitoring</h1><p class="muted">Infrastructure, application, container, and Kubernetes telemetry.</p></div><span class="live-badge"><i></i> LIVE</span></div>
+          <div class="metric-grid">
+            <div class="metric panel"><span>CPU Utilization</span><strong>68.4%</strong><small>+4.2% from 1h ago</small><div class="spark"><i style="height:38%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:71%"></i><i style="height:62%"></i><i style="height:83%"></i><i style="height:68%"></i><i style="height:76%"></i></div></div>
+            <div class="metric panel"><span>Memory Utilization</span><strong>72.1%</strong><small>Stable</small><div class="spark"><i style="height:55%"></i><i style="height:58%"></i><i style="height:61%"></i><i style="height:60%"></i><i style="height:66%"></i><i style="height:70%"></i><i style="height:69%"></i><i style="height:72%"></i></div></div>
+            <div class="metric panel"><span>Request Rate</span><strong>12.8k/s</strong><small>+8.7% from 1h ago</small><div class="spark"><i style="height:32%"></i><i style="height:42%"></i><i style="height:36%"></i><i style="height:58%"></i><i style="height:63%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:80%"></i></div></div>
+            <div class="metric panel"><span>Error Rate</span><strong class="danger-value">2.8%</strong><small>Above normal threshold</small><div class="spark danger"><i style="height:20%"></i><i style="height:24%"></i><i style="height:35%"></i><i style="height:48%"></i><i style="height:44%"></i><i style="height:60%"></i><i style="height:73%"></i><i style="height:66%"></i></div></div>
+          </div>
+          <div class="grid-2"><div class="panel big-chart"><div class="panel-head"><div><h3>Application Performance</h3><span class="panel-sub">Requests, errors & latency</span></div><button class="select">Last 6 hours⌄</button></div><canvas id="performanceChart"></canvas></div>
+          <div class="panel"><div class="panel-head"><div><h3>Kubernetes</h3><span class="panel-sub">Cluster health</span></div></div><div class="k8s-grid"><div><b>18</b><small>Pods running</small></div><div><b>6</b><small>Deployments</small></div><div><b>2</b><small>Restarts</small></div><div><b>3/3</b><small>Nodes healthy</small></div></div><div class="cluster-status"><span class="dot green"></span> Cluster operational <b>99.94%</b></div></div></div>
+        </section>
+
+        <section class="page" id="page-ai">
+          <div class="page-head"><div><p class="eyebrow">SENTRAOPS AI</p><h1>AI Operations Assistant</h1><p class="muted">Analyze logs and incidents, identify evidence, and guide engineers through remediation.</p></div><span class="ai-status">✦ AI Engine Online</span></div>
+          <div class="ai-layout">
+            <div class="panel ai-input"><div class="panel-head"><div><h3>Incident Analysis</h3><span class="panel-sub">Provide operational context</span></div></div>
+              <label>Incident description</label><textarea id="aiDescription">API Gateway error rate increased to 8.4% after the latest deployment. Requests to /checkout are returning 502 responses.</textarea>
+              <label>Relevant logs</label><textarea id="aiLogs">2026-10-01T10:21:44Z ERROR api-gateway upstream connection reset by peer requestId=REQ-1048
+2026-10-01T10:22:01Z ERROR checkout-service timeout after 5000ms
+2026-10-01T10:22:15Z WARN api-gateway retry budget exhausted</textarea>
+              <div class="ai-input-row"><div><label>Service</label><select><option>API Gateway</option><option>Payment Service</option><option>Authentication Service</option></select></div><div><label>Environment</label><select><option>Production</option><option>Staging</option></select></div></div>
+              <button class="btn ai-btn" id="analyzeBtn">✦ Analyze Incident with AI</button>
+              <small class="ai-disclaimer">AI-generated recommendation — Engineer confirmation required.</small>
+            </div>
+            <div class="panel ai-result" id="aiResult">
+              <div class="ai-placeholder"><div class="ai-orb">✦</div><h3>Ready for analysis</h3><p>Run AI analysis to classify the incident, surface evidence, suggest a likely root cause, and recommend investigation steps.</p></div>
+            </div>
+          </div>
+          <div class="panel ai-capabilities"><div><span>✦</span><b>AI workflow</b></div><div>Log Analysis → Classification → Severity Assistance → Root Cause → Troubleshooting → Post-Incident Report</div></div>
+        </section>
+
+        <section class="page" id="page-analytics">
+          <div class="page-head"><div><p class="eyebrow">OPERATIONAL ANALYTICS</p><h1>Analytics</h1><p class="muted">Understand reliability, incident patterns, and operational performance.</p></div><button class="btn ghost">↓ Export report</button></div>
+          <div class="analytics-grid"><div class="panel"><h3>Incidents by Severity</h3><div class="donut"><div><strong>36</strong><small>Total</small></div></div><div class="legend"><span><i class="red-dot"></i>SEV-1 <b>3</b></span><span><i class="orange-dot"></i>SEV-2 <b>8</b></span><span><i class="yellow-dot"></i>SEV-3 <b>17</b></span><span><i class="gray-dot"></i>SEV-4 <b>8</b></span></div></div>
+          <div class="panel"><h3>Top Failing Services</h3><div class="rank-list"><p><span>API Gateway</span><b>18 incidents</b><i style="width:88%"></i></p><p><span>Payment Service</span><b>11 incidents</b><i style="width:62%"></i></p><p><span>Notification Service</span><b>7 incidents</b><i style="width:43%"></i></p><p><span>Order Service</span><b>5 incidents</b><i style="width:30%"></i></p></div></div>
+          <div class="panel wide"><h3>MTTR Trend</h3><div class="big-number">28m <span>↓ 14% vs previous period</span></div><div class="bars"><i style="height:74%"></i><i style="height:63%"></i><i style="height:70%"></i><i style="height:52%"></i><i style="height:58%"></i><i style="height:44%"></i><i style="height:39%"></i><i style="height:31%"></i></div></div></div>
+        </section>
+
+        <section class="page" id="page-deployments">
+          <div class="page-head"><div><p class="eyebrow">RELEASE OPERATIONS</p><h1>Deployments</h1><p class="muted">Track releases, strategies, commits, and verification.</p></div><button class="btn primary">+ New Deployment</button></div>
+          <div class="deploy-timeline" id="deploymentsList"></div>
+        </section>
+
+        <section class="page" id="page-audit">
+          <div class="page-head"><div><p class="eyebrow">GOVERNANCE</p><h1>Audit Logs</h1><p class="muted">Immutable operational activity and configuration history.</p></div><button class="btn ghost">↓ Export CSV</button></div>
+          <div class="table-panel"><table><thead><tr><th>User</th><th>Action</th><th>Resource</th><th>Timestamp</th><th>Metadata</th></tr></thead><tbody id="auditTable"></tbody></table></div>
+        </section>
+
+        <section class="page" id="page-users">
+          <div class="page-head"><div><p class="eyebrow">ACCESS MANAGEMENT</p><h1>Users & Teams</h1><p class="muted">Role-based access for DevOps, SRE, and engineering teams.</p></div><button class="btn primary">+ Add User</button></div>
+          <div class="people-grid" id="peopleGrid"></div>
+        </section>
+
+        <section class="page" id="page-health">
+          <div class="page-head"><div><p class="eyebrow">SYSTEM STATUS</p><h1>System Health</h1><p class="muted">Dependency and platform readiness for deployments and monitoring.</p></div><span class="health-overall"><i></i> All systems operational</span></div>
+          <div class="health-grid" id="healthGrid"></div>
+          <div class="panel endpoint"><div><span class="method">GET</span><code>/api/health</code><button class="btn ghost" id="copyHealth">Copy</button></div><pre>{
+  "status": "healthy",
+  "service": "sentraops-ai",
+  "version": "1.0.0"
+}</pre></div>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-head"><div><p class="eyebrow">CONFIGURATION</p><h1>Settings</h1><p class="muted">Configure workspace, notifications, security, and AI behavior.</p></div><button class="btn primary" id="saveSettings">Save changes</button></div>
+          <div class="settings-grid"><div class="panel settings-nav"><button class="setting active">Workspace</button><button class="setting">Notifications</button><button class="setting">Security</button><button class="setting">AI Operations</button><button class="setting">Integrations</button></div><div class="panel settings-form"><h3>Workspace settings</h3><label>Workspace name<input value="Production Ops"></label><label>Default environment<select><option>Production</option><option>Staging</option></select></label><label>Incident auto-assignment<div class="toggle on" id="toggleAssign"><i></i></div></label><label>AI severity recommendations<div class="toggle on"><i></i></div></label><label>Operational email alerts<div class="toggle"><i></i></div></label></div></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="modal-backdrop" id="modal"><div class="modal"><button class="modal-close" id="closeModal">×</button><h2>Create Incident</h2><p class="muted">Open a new operational incident for engineering investigation.</p><label>Incident title<input id="newTitle" placeholder="e.g. API Gateway elevated error rate"></label><div class="modal-grid"><label>Severity<select id="newSeverity"><option>SEV-1</option><option selected>SEV-2</option><option>SEV-3</option><option>SEV-4</option></select></label><label>Service<select><option>API Gateway</option><option>Payment Service</option><option>Order Service</option></select></label></div><label>Description<textarea placeholder="Describe the impact and observed behavior..."></textarea></label><button class="btn primary full" id="createIncident">Create Incident</button></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
